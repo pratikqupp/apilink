@@ -13,8 +13,6 @@ export const getLinks = async (req, res) => {
 }
 
 export const createLink = async (req, res) => {
-    res.setHeader("Access-Control-Allow-Headers: Content-Type");
-
     const { appName, playstoreUrl, applestoreUrl } = req.body;
     try {
         const createdLink = await DatabaseLinks.create({ appName, playstoreUrl, applestoreUrl });
