@@ -16,5 +16,8 @@
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.24",
     "uuid": "^8.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
