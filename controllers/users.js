@@ -1,6 +1,8 @@
 import DatabaseLinks from '../models/LinkModel.js';
 
 export const getLinks = async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
     try {
         const users = await DatabaseLinks.find();
 
@@ -11,6 +13,8 @@ export const getLinks = async (req, res) => {
 }
 
 export const createLink = async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
     const { appName, playstoreUrl, applestoreUrl } = req.body;
     try {
         const createdLink = await DatabaseLinks.create({ appName, playstoreUrl, applestoreUrl });
@@ -26,6 +30,8 @@ export const createLink = async (req, res) => {
 
 
 export const getLink = async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
     try {
         const appName = req.params.id; // Get the link ID from the request parameters
 
@@ -34,15 +40,18 @@ export const getLink = async (req, res) => {
 
         if (!link) {
             return res.status(404).json({ message: 'Link not found' });
-        }
+        } else {
+            res.status(200).json(link);
 
-        res.status(200).json(link);
+        }
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
 export const deleteLink = async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
     try {
         const user = await DatabaseLinks.findByIdAndDelete(req.params.id);
 
@@ -53,6 +62,8 @@ export const deleteLink = async (req, res) => {
 };
 
 export const updateLink = async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
     const user = req.body;
 
     try {
