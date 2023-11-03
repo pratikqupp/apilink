@@ -27,11 +27,18 @@ export const createLink = async (req, res) => {
 
 export const getLink = async (req, res) => {
     try {
-        const user = await DatabaseLinks.findById(req.params.id);
+        const appName = req.params.id; // Get the link ID from the request parameters
 
-        res.status(200).json(user);
+
+        const link = await DatabaseLinks.findOne({ appName: appName });
+
+        if (!link) {
+            return res.status(404).json({ message: 'Link not found' });
+        }
+
+        res.status(200).json(link);
     } catch (error) {
-        res.status(404).json({ message: error.message });
+        res.status(500).json({ message: error.message });
     }
 };
 
