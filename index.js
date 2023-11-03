@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import usersRoutes from './routes/users.js';
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 3030;
 
 const URL = 'mongodb+srv://test:test@api.vyp94tn.mongodb.net/?retryWrites=true&w=majority'
 
