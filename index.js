@@ -1,10 +1,13 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+const cors = require('cors');
 
 import usersRoutes from './routes/users.js';
 
 const app = express();
+app.use(cors());
+
 const PORT = process.env.PORT || 3030;
 
 const URL = 'mongodb+srv://test:test@api.vyp94tn.mongodb.net/?retryWrites=true&w=majority'

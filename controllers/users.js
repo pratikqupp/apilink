@@ -1,7 +1,7 @@
 import DatabaseLinks from '../models/LinkModel.js';
 
 export const getLinks = async (req, res) => {
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
 
     try {
         const users = await DatabaseLinks.find();
@@ -28,7 +28,7 @@ export const createLink = async (req, res) => {
 
 
 export const getLink = async (req, res) => {
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
 
     try {
         const appName = req.params.id; // Get the link ID from the request parameters
@@ -49,7 +49,7 @@ export const getLink = async (req, res) => {
 
 
 export const deleteLink = async (req, res) => {
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
 
     try {
         const user = await DatabaseLinks.findByIdAndDelete(req.params.id);
@@ -61,7 +61,7 @@ export const deleteLink = async (req, res) => {
 };
 
 export const updateLink = async (req, res) => {
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
 
     const user = req.body;
 
