@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-const cors = require('cors');
+import cors from 'cors'; // Use import for cors module
 
 import usersRoutes from './routes/users.js';
 
@@ -10,11 +10,15 @@ app.use(cors());
 
 const PORT = process.env.PORT || 3030;
 
-const URL = 'mongodb+srv://test:test@api.vyp94tn.mongodb.net/?retryWrites=true&w=majority'
+const URL = 'mongodb+srv://test:test@api.vyp94tn.mongodb.net/?retryWrites=true&w=majority';
 
 mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => PORT, () => console.log(`Server running on port: http://localhost:${PORT}`))
-    .catch((error) => console.log(`Error: ${error}`));
+    .then(() => {
+        console.log(`Server running on port: http://localhost:${PORT}`);
+    })
+    .catch((error) => {
+        console.log(`Error: ${error}`);
+    });
 
 app.use(bodyParser.json());
 
@@ -22,5 +26,6 @@ app.use("/", usersRoutes);
 // app.get("/", (req, res) => res.send("Welcome to the Users API!"));
 app.all("*", (req, res) => res.send("You've tried reaching a route that doesn't exist."));
 
-
-app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));
+app.listen(PORT, () => {
+    console.log(`Server running on port: http://localhost:${PORT}`);
+});
