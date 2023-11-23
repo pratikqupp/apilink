@@ -13,9 +13,9 @@ export const getLinks = async (req, res) => {
 }
 
 export const createLink = async (req, res) => {
-    const { appName, playstoreUrl, applestoreUrl } = req.body;
+    const { appName, playstoreUrl, applestoreUrl ,iddentificationName} = req.body;
     try {
-        const createdLink = await DatabaseLinks.create({ appName, playstoreUrl, applestoreUrl });
+        const createdLink = await DatabaseLinks.create({ appName, playstoreUrl, applestoreUrl ,iddentificationName});
         res.status(201).json(createdLink);
     } catch (error) {
         if (error.code === 11000 && error.keyPattern.appName) {

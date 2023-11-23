@@ -12,6 +12,9 @@ const schema = new mongoose.Schema({
   applestoreUrl: {
     type: String
   },
+  iddentificationName: {
+    type: String
+  },
 });
 
 const User = mongoose.model('qupLink', schema);
