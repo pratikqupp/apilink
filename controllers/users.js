@@ -16,7 +16,7 @@ export const createLink = async (req, res) => {
     const { appName, playstoreUrl, applestoreUrl ,iddentificationName} = req.body;
     try {
         const createdLink = await DatabaseLinks.create({ appName, playstoreUrl, applestoreUrl ,iddentificationName});
-        res.status(201).json(createdLink);
+        res.status(200).json(createdLink);
     } catch (error) {
         if (error.code === 11000 && error.keyPattern.appName) {
             res.status(409).json({ message: 'The app name must be unique' });
@@ -54,7 +54,7 @@ export const deleteLink = async (req, res) => {
     try {
         const user = await DatabaseLinks.findByIdAndDelete(req.params.id);
 
-        res.status(204).json(user);
+        res.status(200).json(user);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
@@ -68,7 +68,7 @@ export const updateLink = async (req, res) => {
     try {
         const newUser = await DatabaseLinks.findByIdAndUpdate(req.params.id, user);
 
-        res.status(204).json(newUser);
+        res.status(200).json(newUser);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }

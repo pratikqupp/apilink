@@ -8,6 +8,6 @@ router.get('/', getLinks);
 router.post('/', createLink);
 router.get('/:id', getLink);
 router.delete('/:id', deleteLink);
-router.patch('/:id', updateLink);
+router.put('/:id', updateLink);
 
 export default router;
